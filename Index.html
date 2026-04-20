@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUGOSMP.NET | Coming Soon</title>
+    <style>
+        :root {
+            --primary: #5865F2; /* Discord Blurple */
+            --bg: #09090b;
+            --text: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        header {
+            position: absolute;
+            top: 30px;
+            left: 50px;
+            font-weight: 800;
+            font-size: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .container { max-width: 600px; padding: 20px; }
+
+        h1 { font-size: 3.5rem; margin-bottom: 0.5rem; }
+        p { color: #a1a1aa; margin-bottom: 2rem; font-size: 1.1rem; }
+
+        /* Countdown Style */
+        .countdown {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 3rem;
+        }
+
+        .box {
+            background: #18181b;
+            padding: 20px 10px;
+            border-radius: 12px;
+            border: 1px solid #27272a;
+        }
+
+        .number { font-size: 2rem; font-weight: bold; display: block; }
+        .label { font-size: 0.7rem; color: #71717a; text-transform: uppercase; }
+
+        .discord-btn {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .discord-btn:hover { background-color: #4752c4; transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+
+    <header>Leyzo</header>
+
+    <div class="container">
+        <h1>Leyzo</h1>
+        <p>Ein neues Kapitel beginnt bald. Sei bereit.</p>
+
+        <div class="countdown">
+            <div class="box"><span id="days" class="number">0</span><span class="label">Tage</span></div>
+            <div class="box"><span id="hours" class="number">0</span><span class="label">Std</span></div>
+            <div class="box"><span id="minutes" class="number">0</span><span class="label">Min</span></div>
+            <div class="box"><span id="seconds" class="number">0</span><span class="label">Sek</span></div>
+        </div>
+
+        <a href="https://discord.gg/qHfwYh8vmc" class="discord-btn">Tritt dem Discord bei</a>
+    </div>
+
+    <script>
+        // Ziel: 18. Mai 2026
+        const targetDate = new Date("May 18, 2026 00:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days;
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("minutes").innerText = minutes;
+            document.getElementById("seconds").innerText = seconds;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
