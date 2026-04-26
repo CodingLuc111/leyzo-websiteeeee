@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Secure Gate</title>
+
+<style>
+body {
+  margin:0;
+  font-family: Segoe UI, Arial;
+  background:#0a0a0a;
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+/* WINDOW STYLE BOX */
+.window {
+  width:350px;
+  background:#111;
+  border:1px solid #333;
+  border-radius:10px;
+  box-shadow:0 0 30px rgba(0,0,0,0.8);
+  overflow:hidden;
+}
+
+/* TOP BAR */
+.topbar {
+  background:#1a1a1a;
+  padding:10px;
+  font-size:12px;
+  display:flex;
+  justify-content:space-between;
+  color:#aaa;
+}
+
+/* CONTENT */
+.content {
+  padding:25px;
+  text-align:center;
+}
+
+input {
+  width:90%;
+  padding:10px;
+  margin-top:10px;
+  background:#000;
+  border:1px solid #333;
+  color:white;
+  border-radius:5px;
+}
+
+button {
+  margin-top:15px;
+  padding:10px;
+  width:95%;
+  background:#00aaff;
+  border:none;
+  color:white;
+  border-radius:5px;
+  cursor:pointer;
+}
+
+button:hover {
+  background:#0088cc;
+}
+
+#download {
+  display:none;
+  background:#00cc66;
+}
+</style>
+</head>
+
+<body>
+
+<div class="window">
+
+  <div class="topbar">
+    <span>Secure Gate</span>
+    <span>v1.0</span>
+  </div>
+
+  <div class="content">
+
+    <h2>🔐 Access Required</h2>
+
+    <input id="code" placeholder="Enter Access Code">
+
+    <button onclick="unlock()">Unlock</button>
+
+    <button id="download" onclick="downloadFile()">
+      Download Pack
+    </button>
+
+  </div>
+</div>
+
+<script>
+
+// gültige Codes
+const codes = [
+  "VIP10",
+  "USER20",
+  "ACCESS44"
+];
+
+// Anti-Link Sharing (local lock)
+if(localStorage.getItem("access") === "true"){
+  document.getElementById("download").style.display="block";
+}
+
+function unlock(){
+  let input = document.getElementById("code").value;
+
+  if(codes.includes(input)){
+
+    // speichern im Gerät
+    localStorage.setItem("access","true");
+
+    document.getElementById("download").style.display="block";
+
+    alert("✔ Access Granted");
+
+  } else {
+    alert("❌ Invalid Code");
+  }
+}
+
+function downloadFile(){
+  window.location = "https://DEIN-LINK-ZUR-ZIP/pack.zip";
+}
+
+</script>
+
+</body>
+</html>
