@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Secure Gate</title>
+<title>Secure Download Gate</title>
 
 <style>
 body {
@@ -16,12 +16,12 @@ body {
   height:100vh;
 }
 
-/* WINDOW STYLE BOX */
+/* WINDOW BOX */
 .window {
-  width:350px;
+  width:360px;
   background:#111;
   border:1px solid #333;
-  border-radius:10px;
+  border-radius:12px;
   box-shadow:0 0 30px rgba(0,0,0,0.8);
   overflow:hidden;
 }
@@ -42,6 +42,10 @@ body {
   text-align:center;
 }
 
+h2 {
+  margin-bottom:10px;
+}
+
 input {
   width:90%;
   padding:10px;
@@ -49,7 +53,7 @@ input {
   background:#000;
   border:1px solid #333;
   color:white;
-  border-radius:5px;
+  border-radius:6px;
 }
 
 button {
@@ -59,8 +63,9 @@ button {
   background:#00aaff;
   border:none;
   color:white;
-  border-radius:5px;
+  border-radius:6px;
   cursor:pointer;
+  font-weight:bold;
 }
 
 button:hover {
@@ -70,6 +75,10 @@ button:hover {
 #download {
   display:none;
   background:#00cc66;
+}
+
+#download:hover {
+  background:#00aa55;
 }
 </style>
 </head>
@@ -96,20 +105,22 @@ button:hover {
     </button>
 
   </div>
+
 </div>
 
 <script>
 
-// gültige Codes
+// 🔑 DEINE CODES
 const codes = [
   "VIP10",
+  "ACCESS44",
   "USER20",
-  "ACCESS44"
+  "TEST123"
 ];
 
-// Anti-Link Sharing (local lock)
+// 🚫 simple Anti-Link Sharing (local device lock)
 if(localStorage.getItem("access") === "true"){
-  document.getElementById("download").style.display="block";
+  document.getElementById("download").style.display = "block";
 }
 
 function unlock(){
@@ -117,10 +128,9 @@ function unlock(){
 
   if(codes.includes(input)){
 
-    // speichern im Gerät
     localStorage.setItem("access","true");
 
-    document.getElementById("download").style.display="block";
+    document.getElementById("download").style.display = "block";
 
     alert("✔ Access Granted");
 
@@ -130,7 +140,7 @@ function unlock(){
 }
 
 function downloadFile(){
-  window.location = "https://DEIN-LINK-ZUR-ZIP/pack.zip";
+  window.location = "https://drive.google.com/uc?export=download&id=1hyODdVWmw-14cGuTI-JX-My_UwpZ2MXK";
 }
 
 </script>
