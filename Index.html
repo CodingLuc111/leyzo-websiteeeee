@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LYROTV</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+  color: white;
+  background: url("9F5F1375-DC31-4C5E-9400-B3420EC2899C.png") no-repeat center/cover;
+}
+
+/* Dark Overlay */
+body::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9));
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+/* Sterne */
+.stars {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(white 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: moveStars 60s linear infinite;
+  opacity: 0.15;
+}
+
+/* Maus Glow */
+.cursor-glow {
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(77,163,255,0.4), transparent);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+/* Navbar */
+nav {
+  position: absolute;
+  top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40px;
+  z-index: 2;
+  animation: fadeIn 1.5s ease forwards;
+}
+
+.logo {
+  font-size: 22px;
+  letter-spacing: 3px;
+}
+
+.links a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: white;
+  opacity: 0.7;
+  transition: 0.3s;
+}
+
+.links a:hover {
+  opacity: 1;
+  text-shadow: 0 0 10px #4da3ff;
+}
+
+/* Center Box */
+.hero {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  position: relative;
+}
+
+/* Glass Box */
+.box {
+  padding: 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  background: rgba(255,255,255,0.05);
+  text-align: center;
+  animation: fadeUp 2s ease forwards;
+}
+
+.title {
+  font-size: 60px;
+  letter-spacing: 10px;
+  animation: glow 3s infinite alternate;
+}
+
+.line {
+  width: 120px;
+  height: 3px;
+  background: #4da3ff;
+  margin: 20px auto;
+  box-shadow: 0 0 20px #4da3ff;
+  animation: pulse 2s infinite;
+}
+
+.buttons a {
+  display: inline-block;
+  margin: 10px;
+  padding: 12px 25px;
+  border: 1px solid #4da3ff;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.buttons a:hover {
+  background: #4da3ff;
+  box-shadow: 0 0 25px #4da3ff;
+  transform: translateY(-5px) scale(1.05);
+}
+
+/* Animationen */
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow {
+  from {text-shadow: 0 0 10px #4da3ff;}
+  to {text-shadow: 0 0 40px #4da3ff;}
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 10px #4da3ff; }
+  50% { box-shadow: 0 0 30px #4da3ff; }
+  100% { box-shadow: 0 0 10px #4da3ff; }
+}
+
+@keyframes moveStars {
+  from {transform: translate(0,0);}
+  to {transform: translate(-500px,-500px);}
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .title {
+    font-size: 40px;
+  }
+
+  .box {
+    padding: 25px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+<div class="cursor-glow" id="glow"></div>
+
+<nav>
+  <div class="logo">LYROTV</div>
+
+  <div class="links">
+    <a href="https://www.tiktok.com/@lyrotv00" target="_blank">TikTok</a>
+    <a href="https://discord.gg/5JsSQKqVDA" target="_blank">Discord</a>
+    <a href="https://youtube.com/@lyrotv0" target="_blank">YouTube</a>
+    <a href="https://twitch.tv/lyrotv00" target="_blank">Twitch</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="box">
+    <div class="title">LYROTV</div>
+    <div class="line"></div>
+
+    <div class="buttons">
+      <a href="https://www.tiktok.com/@lyrotv00" target="_blank">TikTok</a>
+      <a href="https://discord.gg/5JsSQKqVDA" target="_blank">Discord</a>
+      <a href="https://youtube.com/@lyrotv0" target="_blank">YouTube</a>
+      <a href="https://twitch.tv/lyrotv00" target="_blank">Twitch</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const glow = document.getElementById("glow");
+
+document.addEventListener("mousemove", (e) => {
+  glow.style.left = e.clientX + "px";
+  glow.style.top = e.clientY + "px";
+});
+</script>
+
+</body>
+</html>
